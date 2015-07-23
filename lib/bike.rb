@@ -1,7 +1,7 @@
 class Bike
 
-  def working?
-	 true
+  def working?(state=true)
+	 state
   end
 
 end
