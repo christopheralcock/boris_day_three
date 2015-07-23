@@ -19,8 +19,13 @@ attr_reader :capacity
   end
 
   def release_bike
-    fail 'No bikes available' if empty? #IE WHEN THE INSTANCE VARIABLE @BIKE IS NIL
-    bikes.pop ##TRY THIS WITHOUT THE @
+    bike = bikes.select{|bike| bike.working}.pop
+    if bike.nil?
+      fail 'No bikes available'
+    else
+      bikes.delete bike
+      bike  #IE WHEN THE INSTANCE VARIABLE @BIKE IS NIL
+    end
   end
 
   private
@@ -32,7 +37,7 @@ attr_reader :capacity
   end
 
   def empty?
-    bikes.empty?
+    bikes.empty? #all bikes are false
   end
 
 end
