@@ -13,8 +13,8 @@ describe DockingStation do
   end
 
  it 'only releases working bikes' do
-    bmx = Bike.new
-    bmx.working?(false)
+    bmx = double :bike, working: true
+    #bmx.working?(false)
     subject.dock bmx ##WARNING - this allows the unit test to pass because it assumes that the argument that dock takes when called is a member of that class - this is not defined in the code. Until defined, the feature test fails!
     bike = subject.release_bike
     expect(bike.working).to eq true #bike_ok
@@ -23,8 +23,8 @@ describe DockingStation do
 
   describe '#dock' do
     it 'raises an error when full (capacity 20)' do
-      DockingStation::DEFAULT_CAPACITY.times { subject.dock Bike.new } ##Class constant used correctly!
-      expect { subject.dock Bike.new }.to raise_error 'Docking station full'
+      DockingStation::DEFAULT_CAPACITY.times { subject.dock :bike } ##Class constant used correctly!
+      expect { subject.dock :bike }.to raise_error 'Docking station full'
     end
   end
 
