@@ -29,6 +29,13 @@ describe DockingStation do
   it 'has a default capacity' do
     expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY ####when we get this to work can we try subbing ".to eq" with "to be", "=", "==" & "==="
   end
+
+  describe '#capacity_change' do
+    it 'changes the capacity of the docking station' do
+      expect(subject).to respond_to(:capacity_change).with(1).argument
+    end
+  end
+
 end
 
 ##expect(actual).to eq(expected)

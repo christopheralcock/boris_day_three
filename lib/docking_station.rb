@@ -8,6 +8,10 @@ attr_reader :capacity
     @capacity = DEFAULT_CAPACITY
   end
 
+  def capacity_change(new_capacity)
+    @capacity = new_capacity
+  end
+
   def dock(bike)
     fail 'Docking station full' if full?
     bikes << bike ##gives value bike when dock is called on argument bike
