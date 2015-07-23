@@ -13,7 +13,9 @@ describe DockingStation do
   end
 
  it 'only releases working bikes' do
-    subject.dock Bike.new ##WARNING - this allows the unit test to pass because it assumes that the argument that dock takes when called is a member of that class - this is not defined in the code. Until defined, the feature test fails!
+    bmx = Bike.new
+    bmx.working?(false)
+    subject.dock bmx ##WARNING - this allows the unit test to pass because it assumes that the argument that dock takes when called is a member of that class - this is not defined in the code. Until defined, the feature test fails!
     bike = subject.release_bike
     expect(bike.working).to eq true #bike_ok
   end
